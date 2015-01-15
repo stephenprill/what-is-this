@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>What is this?  Rule #3</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Rule #1</a>
+      |
+      <a href="/02.html">Rule #2</a>
+      |
+      <a href="/03.html">Rule #3</a>
+      |
+      <a href="/04.html">Rule #4</a>
+    </nav>
+
+    <h1>What is <tt>this</tt>?</h1>
+    <h2>Rule #3 - Instances</h2>
+    <small>Check the console</small>
+
+    <script src="app.js"></script>
+    <script charset="utf-8">
+
+      var Person = function (firstName, lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+      };
+
+      Person.prototype.sing = function () {
+        code("La la la la");
+      };
+
+      Person.prototype.fullName = function () {
+        code(this.firstName + ' ' + this.lastName);
+      };
+
+      header("\nExample 1: Instantiate an object\n");
+      print("\n var quinn = new Person('Quinn', 'Fabray');");
+      print("var mercedes = new Person('Mercedes', 'Jones');\n");
+
+      // you can instantiate new objects
+      var quinn = new Person('Quinn', 'Fabray');
+      var mercedes = new Person('Mercedes', 'Jones');
+
+      header("\nExample 2: Call methods on the object");
+      print("\n quinn.sing();");
+      print("mercedes.sing();\n\n");
+
+      // and call methods on those objects
+      quinn.sing();
+      mercedes.sing();
+
+      header("\nExample 3: Call a method that uses `this`");
+      print("\n quinn.fullName();");
+      print("mercedes.fullName();\n\n");
+
+      quinn.fullName();
+      mercedes.fullName();
+
+      header("\nExample 4: Call the function on it's own");
+      print("\n var quinnName = quinn.fullName;");
+      print("var mercedesName = mercedes.fullName;");
+      print("quinnName();\n");
+      print("mercedesName();\n\n");
+
+      var quinnName = quinn.fullName;
+      var mercedesName = mercedes.fullName;
+      quinnName();
+      mercedesName();
+
+      question("What's rule #3?")
+
+    </script>
+  </body>
+</html>

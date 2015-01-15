@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <title>What is this?  Rule #2</title>
+  </head>
+  <body>
+
+    <nav>
+      <a href="/">Rule #1</a>
+      |
+      <a href="/02.html">Rule #2</a>
+      |
+      <a href="/03.html">Rule #3</a>
+      |
+      <a href="/04.html">Rule #4</a>
+    </nav>
+
+    <h1>What is <tt>this</tt>?</h1>
+    <h2>Rule #2 - Objects and methods</h2>
+    <small>Check the console</small>
+
+    <script src="app.js"></script>
+    <script charset="utf-8">
+
+      var person = {
+        firstName: 'Quinn',
+        lastName: 'Fabray',
+
+        sing: function () {
+          print("La la la la");
+        },
+
+        fullName: function () {
+          print(this.firstName + ' ' + this.lastName);
+        }
+      };
+
+      header("\nExample 1: Call a method on an object\n");
+      print("\nperson.sing()\n");
+
+      // you can call a method on an object
+      person.sing();
+
+      header("\nExample 2: Call the same method, but on its own");
+      print("\nvar singFunc = person.sing;");
+      print("singFunc();\n");
+
+      // or you can instantiate a variable that points to that function
+      // and call it directly
+      var singFunc = person.sing;
+      singFunc();
+
+      header("\nExample 3: Call a method on an object that uses `this`");
+      print("\nperson.fullName()\n");
+
+      person.fullName();
+
+      header("\nExample 4: Call the same method, but on its own");
+      print("\nvar nameFunc = person.fullName;");
+      print("nameFunc();\n");
+
+      var nameFunc = person.fullName;
+      nameFunc();
+
+      question("What is rule #2?");
+    </script>
+  </body>
+</html>

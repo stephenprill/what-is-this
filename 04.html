@@ -1,0 +1,68 @@
+<html>
+  <head>
+    <title>What is this?  Rule #4</title>
+  </head>
+  <body>
+    <nav>
+      <a href="/">Rule #1</a>
+      |
+      <a href="/02.html">Rule #2</a>
+      |
+      <a href="/03.html">Rule #3</a>
+      |
+      <a href="/04.html">Rule #4</a>
+    </nav>
+
+    <h1>What is <tt>this</tt>?</h1>
+    <h2>Rule #4 - <tt>.call</tt>, <tt>.apply</tt> and <tt>.bind</tt></h2>
+    <small>Check the console</small>
+
+    <script src="app.js"></script>
+    <script charset="utf-8">
+      function fullName(firstName, lastName) {
+        code(firstName + ' ' + lastName);
+        console.log('  ', this);
+      };
+
+      header("\nExample 1: Call a function with ()\n");
+      print("\n fullName('Sue', 'Sylvester');\n\n");
+
+      // you can call functions with ()
+      fullName('Sue', 'Sylvester');
+
+      header("\nExample 2: Call a function with `.call()`\n");
+      print("\n fullName.call(this, 'Sue', 'Sylvester');\n\n");
+
+      // you can call functions with .call() and you pass arguments normally
+      fullName.call(this, 'Sue', 'Sylvester');
+
+      print("\n fullName.call({cheer: 'Ra Ra'}, 'Sue', 'Sylvester');\n\n");
+      fullName.call({cheer: 'Ra Ra'}, 'Sue', 'Sylvester');
+
+      header("\nExample 3: Call a function with `.apply()`\n");
+      print("\n fullName.apply(this, ['Sue', 'Sylvester']);\n\n");
+
+      // you can call functions with .apply() and you pass arguments as an array
+      fullName.apply(this, ['Sue', 'Sylvester']);
+
+      print("\n fullName.apply({cheer: 'Ra Ra'}, ['Sue', 'Sylvester']);\n\n");
+      fullName.apply({cheer: 'Ra Ra'}, ['Sue', 'Sylvester']);
+
+      header("\nExample 4: Create a new function with `.bind()`\n\n");
+      print("var cheerName = fullName.bind({cheer: 'Ra Ra'});");
+      print("cheerName('Sue', 'Sylvester');\n\n");
+
+      var cheerName = fullName.bind({cheer: 'Ra Ra'});
+      cheerName('Sue', 'Sylvester');
+
+      print("\n cheerName.call({foo: 'bar'}, 'Sue', 'Sylvester');\n\n");
+      cheerName.call({foo: 'bar'}, 'Sue', 'Sylvester');
+
+      print("\n cheerName.apply({foo: 'bar'}, ['Sue', 'Sylvester']);\n\n");
+      cheerName.apply({foo: 'bar'}, ['Sue', 'Sylvester']);
+
+      question("What is rule #4??")
+
+    </script>
+  </body>
+</html>
